@@ -1,0 +1,45 @@
+
+    <header>
+        <nav>
+        <h2><a href="/">The Wircher: Bestiary</a></h2>
+        <div class="login">
+            <a  href="login.html">Login</a>
+        </div>
+        </nav>
+        <hr style="clear: both;">
+    </header>
+    <div class="box">
+        <div class="bestiario">
+            <h2>{{beast.nombre}}</h2>
+            <hr>
+            <aside style="float: right; margin-right: 20%;">
+                <img src="{{beast.img}}" alt="{{beast.nombre}}" style="width: 250px;">
+            </aside>
+            
+            <div style="float: left; width: 40%; margin-left: 15px">
+                <h4>Origen</h4>
+                <p>{{beast.origen}}</p>
+                <hr>
+                <h4>Clasificación</h4>
+                <p>{{beast.clasificacion}}</p>
+                <hr>
+                <h4>Características: </h4>
+                <div style="margin-left: 15px;">
+                    <h5>Apariencia</h5>
+                    <p>{{beast.apariencia}}</p>
+                    <h5>Tamaño</h5>
+                    <p>{{beast.tamanio}}</p>
+                    <h5>Poderes</h5>
+                    <p>{{beast.poderes}}</p>  
+                </div>              
+            </div>           
+            <section style="clear: both;"></section>
+            <div class="login">
+                <a  href="/edit/{{beast._id}}">Editar</a>
+            </div>
+            <div class="login">
+                <a id="myLink" href="#" onclick="goBack();return false;">Volver</a>
+            </div>
+            <script src="/js/bestia.js"></script>
+        </div>
+    </div>

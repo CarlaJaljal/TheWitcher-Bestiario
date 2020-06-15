@@ -1,0 +1,39 @@
+    <header>
+        <nav>
+        <h2><a href="index.html">The Wircher: Bestiary</a></h2>
+        <div class="login">
+            <a  href="login.html">Login</a>
+        </div>
+        </nav>
+        <hr style="clear: both;">
+    </header>
+    <div class="box">
+        <div class="bestiario">
+            <img style="width: 250px; margin-top: 25px; float:right; margin-right: 15%" src="{{beast.img}}" alt="{{beast.name}}">
+
+            <form action="/edit/{{beast._id}}" id="form_edit" method="POST">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" value="{{beast.nombre}}">
+                <label for="libroID">Libro número: </label>
+                <input type="number" name="libroID" value="{{beast.libroID}}">
+                <label for="libro">Nombre del libro</label>
+                <input type="text" name="libro" value="{{beast.libro}}">
+                <label for="origen">Origen</label>
+                <input type="text" name="origen" value="{{beast.origen}}">
+                <label for="clasificacion">Clasificación</label>
+                <input type="text" name="clasificacion" value="{{beast.clasificacion}}">
+                <h4>Características:</h4>
+                <label for="apariencia">Apariencia</label>
+                <textarea type="textarea" name="apariencia">{{beast.apariencia}}</textarea>
+                <label for="tamanio">Tamaño</label>
+                <textarea type="textarea" name="tamanio">{{beast.tamanio}}</textarea>
+                <label for="poderes">Poderes</label>
+                <textarea type="textarea" name="poderes">{{beast.poderes}}</textarea>
+                <input class="submit" type="submit" value="enviar">
+            </form>     
+            <section style="clear: both;"></section>
+            <div class="login">
+                <a href="index.html">Cancelar</a>
+            </div>
+        </div>
+    </div>

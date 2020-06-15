@@ -1,0 +1,30 @@
+
+    <header>
+        <nav>
+        <h2><a href="/">The Wircher: Bestiary</a></h2>
+        <div class="login">
+            <a  href="login.html">Login</a>
+        </div>
+        </nav>
+        <hr style="clear: both;">
+    </header>
+    <div class="box">
+        {{#if beasts}}
+        <div class="bestiario">
+            <h2>Bestiario</h2>
+            <h3>Libro {{beasts.0.libroID}}: {{beasts.0.libro}}</h3>
+            <p>En el siguiente bestiario se enumerarán las criaturas que aparecen en el libro {{beasts.0.libroID}} de la saga <strong>The Witcher</strong></p>
+
+            <ul>
+            {{#each beasts}}
+            <li><a href="/bestia/{{this._id}}">Ver información de {{this.nombre}}</a></li>
+            {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+        {{#else}}
+        <h2>Aún no hay bestias agregadas a este libro</h2>
+        {{/else}}
+    </div>
+
+
