@@ -1,8 +1,8 @@
 # TheWitcher-Bestiario
 
 Esta página contiene las siguientes funcionalidades:
-- Ver y editar el listado de items
 - Login como Admin
+- Ver y editar el listado de items
 - Permisos de Admin para editar las entradas
 - Integración con MongoAtlas
 
