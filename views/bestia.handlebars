@@ -1,19 +1,9 @@
-
-    <header>
-        <nav>
-        <h2><a href="/">The Wircher: Bestiary</a></h2>
-        <div class="login">
-            <a  href="login.html">Login</a>
-        </div>
-        </nav>
-        <hr style="clear: both;">
-    </header>
     <div class="box">
         <div class="bestiario">
             <h2>{{beast.nombre}}</h2>
             <hr>
-            <aside style="float: right; margin-right: 20%;">
-                <img src="{{beast.img}}" alt="{{beast.nombre}}" style="width: 250px;">
+            <aside  style="float: right; margin-right: 10%;">
+                <img class="imgbig" src="{{beast.img}}" alt="{{beast.nombre}}" style="max-width: 400px; max-height: 450px;">
             </aside>
             
             <div style="float: left; width: 40%; margin-left: 15px">
@@ -34,12 +24,12 @@
                 </div>              
             </div>           
             <section style="clear: both;"></section>
-            <div class="login">
-                <a  href="/edit/{{beast._id}}">Editar</a>
-            </div>
-            <div class="login">
-                <a id="myLink" href="#" onclick="goBack();return false;">Volver</a>
-            </div>
-            <script src="/js/bestia.js"></script>
+
+        </div>
+        <div class="login">
+            <a  href="/edit/{{beast._id}}">Editar</a>
+        </div>
+        <div class="login">
+            <a href="/libro/{{beast.libroID}}">Volver</a>
         </div>
     </div>

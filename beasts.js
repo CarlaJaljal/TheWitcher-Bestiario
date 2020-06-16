@@ -18,10 +18,8 @@ const getAll = (cbResult) => {
 
       beastsCollection.find().toArray((err, beastList) => {
         if (err) {
-          // retornar array vacío
           cbResult([]);
         } else {
-          // retornar array con datos
           cbResult(beastList)
         }
         client.close();
@@ -34,15 +32,14 @@ const getAll = (cbResult) => {
 /**
  * Retorna las bestias según libro.
  * 
- * @param {number} filterId Id de las bestias buscadas
+ * @param {string} filterId Id de las bestias buscadas
  * @param {function} cbResult callback function(beasts: Array)
  * 
  * @returns {object | undefined} Objeto con datos de la persona encontrada o undefined si no se encuentra
  */
-const getByBook = (filterId = Number, cbResult) => {
+const getByBook = (filterId, cbResult) => {
   mongodb.MongoClient.connect(mongoURL, (err, client) => {
     if (err) {
-      // retornar array vacío
       cbResult(undefined);
       client.close();
     } else {
@@ -51,7 +48,6 @@ const getByBook = (filterId = Number, cbResult) => {
 
       beastsCollection.find({ libroID: filterId }).toArray((err, beasts) => {
 
-        // retornar array con datos
         if (err) {
           cbResult(undefined);
         } else {
@@ -80,7 +76,6 @@ const getById = (filterId, cbResult) => {
 
   mongodb.MongoClient.connect(mongoURL, (err, client) => {
     if (err) {
-      // retornar array vacío
       cbResult(undefined);
       client.close();
     } else {
@@ -89,7 +84,6 @@ const getById = (filterId, cbResult) => {
 
       beastsCollection.findOne({ _id: o_id }, (err, beast) => {
 
-        // retornar array con datos
         if (err) {
           cbResult(undefined);
         } else {
@@ -104,7 +98,7 @@ const getById = (filterId, cbResult) => {
 }
 
 /**
- * Retorna la bestia del id recibido
+ * Busca la bestia con el id recibido y lo updatea con los datos que recibe.
  * 
  * @param {string} filterId Id de la bestia buscada
  * @param {object} body contenido del body
@@ -119,19 +113,19 @@ const getByIdAndUpdate = (filterId, body, cbResult) => {
 
   mongodb.MongoClient.connect(mongoURL, (err, client) => {
     if (err) {
-      // retornar array vacío
+
       cbResult(undefined);
       client.close();
     } else {
       const thewitcherDB = client.db("thewitcher");
       const beastsCollection = thewitcherDB.collection("beasts");
 
-      beastsCollection.findOneAndUpdate({ _id: o_id}, body, {returnOriginal: false}, (err, beastupdated) => {
-        // retornar array con datos
+      beastsCollection.findOneAndUpdate({ _id: o_id}, {$set: body}, {returnOriginal: false}, (err, beastupdated) => {
+
         if (err) {
           cbResult(undefined);
         } else {
-          cbResult(beastupdated);
+          cbResult(beastupdated.value);
         }
         client.close();
       });
@@ -141,7 +135,7 @@ const getByIdAndUpdate = (filterId, body, cbResult) => {
 
 
 
-// Exportación de las 3 funciones
+
 module.exports = {
   getByIdAndUpdate,
   getAll,

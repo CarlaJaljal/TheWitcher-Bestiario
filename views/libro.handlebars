@@ -1,30 +1,30 @@
-
-    <header>
-        <nav>
-        <h2><a href="/">The Wircher: Bestiary</a></h2>
-        <div class="login">
-            <a  href="login.html">Login</a>
-        </div>
-        </nav>
-        <hr style="clear: both;">
-    </header>
     <div class="box">
         {{#if beasts}}
         <div class="bestiario">
-            <h2>Bestiario</h2>
             <h3>Libro {{beasts.0.libroID}}: {{beasts.0.libro}}</h3>
-            <p>En el siguiente bestiario se enumerarán las criaturas que aparecen en el libro {{beasts.0.libroID}} de la saga <strong>The Witcher</strong></p>
+            <hr>
+            <h4>En el siguiente bestiario se enumerarán las criaturas que aparecen en el libro {{beasts.0.libroID}} de la saga <strong>The Witcher</strong></h4>
 
             <ul>
             {{#each beasts}}
-            <li><a href="/bestia/{{this._id}}">Ver información de {{this.nombre}}</a></li>
+            <div class="beasts">                
+                <h3>{{this.nombre}}</h3>
+                <a href="/bestia/{{this._id}}">
+                <div class="img">
+                    <img src="{{this.img}}" alt="{{this.nombre}}">
+                </div>
+                </a>
+            </div>
             {{/each}}
+            <div style="clear: both;"></div>
             </ul>
         </div>
+        {{else}}
+        <h2 style=" width:50%; padding: 30px; text-align: center; margin: 0 auto">Aún no hay bestias agregadas a este libro</h2>
         {{/if}}
-        {{#else}}
-        <h2>Aún no hay bestias agregadas a este libro</h2>
-        {{/else}}
+        <div class="login">
+            <a href="/">Volver</a>
+        </div>
     </div>
 
 
